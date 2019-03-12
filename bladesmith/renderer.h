@@ -20,6 +20,7 @@ class Renderer
 		void renderCamera(Camera* cam);
 
 		void renderSprite(Sprite* sprite, float px, float py, float sx, float sy, float rot);
+		void Renderer::renderInteractor(Interactor* interactor);
 		GLFWwindow* window() { return _window; };
 
 		unsigned int width() { return _window_width; };

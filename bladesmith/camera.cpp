@@ -1,7 +1,8 @@
 #include <bladesmith/camera.h>
 
-Camera::Camera(glm::vec3 pos, glm::vec2 size, Stage* stage) {
+Camera::Camera(glm::vec3 pos, glm::vec2 size, Stage* stage, int priority) {
 	this->stage = stage;
+	this->priority = priority;
 	glm::mat4 _viewMatrix;
 	position = pos; //glm::vec3(0, 0, 5);
 	cursor = glm::vec3(0, 0, 0);

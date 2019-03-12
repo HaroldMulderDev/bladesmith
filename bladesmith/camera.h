@@ -11,12 +11,19 @@
 
 class Camera {
 public:
-	Camera(glm::vec3 pos, glm::vec2 size, Stage* stage);
+	Camera(glm::vec3 pos, glm::vec2 size, Stage* stage, int priority);
 	~Camera();
 	void computeMatricesFromInputs(GLFWwindow* window);
 	glm::mat4 getProjectionMatrix();
 	glm::mat4 getViewMatrix();
 	glm::vec3 getCursor();
+	int getPriority() {
+		return priority;
+	}
+
+	Stage* getStage(){
+		return stage;
+	}
 
 private:
 	glm::mat4 _viewMatrix;
@@ -26,6 +33,7 @@ private:
 	glm::vec3 position;
 	glm::vec3 cursor;
 	float speed;
+	int priority;
 	Stage* stage;
 };
 

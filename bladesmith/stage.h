@@ -14,6 +14,22 @@ public:
 
    // Stage destructor
    ~Stage();
+   
+   std::vector<Interactor*> getRenderList() {
+	   return renderList;
+   }
+
+   void addToRenderList(Interactor* i) {
+	   renderList.push_back(i);
+   }
+
+   std::vector<Interactor*> getUpdateList() {
+	   return updateList;
+   }
+
+   void addToUpdateList(Interactor* i) {
+	   updateList.push_back(i);
+   }
 private:
 
 	std::vector<Interactor*> updateList;

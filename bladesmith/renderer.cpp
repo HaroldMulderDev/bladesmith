@@ -78,6 +78,11 @@ void Renderer::renderCamera(Camera* cam) {
 	cam->computeMatricesFromInputs(_window); // Compute the ViewMatrix from keyboard and mouse input (see: camera.h/cpp)
 	_viewMatrix = cam->getViewMatrix(); // get from Camera (Camera position and direction)
 	_projectionMatrix = cam->getProjectionMatrix();
+	cam->getStage()->getRenderList();
+}
+
+void Renderer::renderInteractor(Interactor* interactor) {
+	renderSprite(interactor->getSprite(), interactor->getPosition().x, interactor->getPosition().y, interactor->getScale().x, interactor->getScale().y, interactor->getRotation().z);
 }
 
 void Renderer::renderSprite(Sprite* sprite, float px, float py, float sx, float sy, float rot)
