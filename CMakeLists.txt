@@ -31,7 +31,7 @@ endif(UNIX)
 
 if(WIN32)
 	# Create a group for Visual Studio
-	SOURCE_GROUP(common REGULAR_EXPRESSION ".*/common/.*" )
+	SOURCE_GROUP(bladesmith REGULAR_EXPRESSION ".*/bladesmith/.*" )
 	# suppress pedantic warnings
 	add_definitions( "/W1 /D_CRT_SECURE_NO_WARNINGS /wd4514 /nologo" )
 endif(WIN32)
@@ -57,14 +57,20 @@ add_definitions(
 	-D_CRT_SECURE_NO_WARNINGS
 )
 
-# Common (libcommon.a)
-add_library(common
-	common/camera.h
-	common/camera.cpp
-	common/renderer.h
-	common/renderer.cpp
-	common/sprite.h
-	common/sprite.cpp
+# bladesmith (libbladesmith.a)
+add_library(bladesmith
+	bladesmith/camera.h
+	bladesmith/camera.cpp
+	bladesmith/core.h
+	bladesmith/core.cpp
+	bladesmith/interactor.h
+	bladesmith/interactor.cpp
+	bladesmith/renderer.h
+	bladesmith/renderer.cpp
+	bladesmith/sprite.h
+	bladesmith/sprite.cpp
+	bladesmith/stage.h
+	bladesmith/stage.cpp
 )
 
 # Demo
@@ -72,7 +78,7 @@ add_executable(demo
 	demo/demo.cpp
 )
 target_link_libraries(demo
-	common
+	bladesmith
 	${ALL_GRAPHICS_LIBS}
 )
 # Copy assets and shaders to the build directory
@@ -82,6 +88,6 @@ file(
 	DESTINATION ${CMAKE_BINARY_DIR}
 )
 file(
-	COPY common/shaders
+	COPY bladesmith/shaders
 	DESTINATION ${CMAKE_BINARY_DIR}
 )
