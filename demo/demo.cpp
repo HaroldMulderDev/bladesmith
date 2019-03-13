@@ -7,6 +7,7 @@
 #include <bladesmith/renderer.h>
 #include <bladesmith/camera.h>
 #include <bladesmith/sprite.h>
+#include <bladesmith/grid_T.h>
 
 int main( void )
 {
