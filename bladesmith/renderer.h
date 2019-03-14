@@ -8,7 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/euler_angles.hpp>
 
-#include <bladesmith/sprite.h>
+#include "sprite.h"
 #include "camera.h"
 
 class Renderer
