@@ -8,29 +8,20 @@
 #include <bladesmith/camera.h>
 #include <bladesmith/sprite.h>
 #include <bladesmith/grid_T.h>
+#include "myScene.h"
 
 int main( void )
 {
+
 	Renderer renderer(1280, 720);
-
-	Sprite* pencils = new Sprite("assets/pencils.tga");
-	Sprite* kingkong = new Sprite("assets/kingkong.tga");
-	Sprite* rgba = new Sprite("assets/rgba.tga");
-
-	float rot_z = 0.0f;
+	myScene* scene = new myScene();
+	Camera* cam = new Camera(glm::vec3(0, 0, 5), glm::vec2(1280, 720), scene, 0);
 
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//glm::vec3 cursor = getCursor(); // from Camera
-		//printf("(%f,%f)\n",cursor.x, cursor.y);
-
-		// Render all Sprites (Sprite*, xpos, ypos, xscale, yscale, rotation)
-		renderer.renderSprite(pencils, 400, 300, 1.0f, 1.0f, 0.0f);
-		renderer.renderSprite(kingkong, 900, 400, 1.0f, 1.0f, 0.0f);
-		renderer.renderSprite(rgba, renderer.width()/2, renderer.height()/2, 3.0f, 3.0f, rot_z);
-		rot_z += 0.03f;
+		renderer.renderCamera(cam);
 
 		// Swap buffers
 		glfwSwapBuffers(renderer.window());
@@ -39,10 +30,6 @@ int main( void )
 	} // Check if the ESC key was pressed or the window was closed
 	while( glfwGetKey(renderer.window(), GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
 		   glfwWindowShouldClose(renderer.window()) == 0 );
-
-	delete pencils;
-	delete kingkong;
-	delete rgba;
 
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();

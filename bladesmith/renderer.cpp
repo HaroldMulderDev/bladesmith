@@ -78,7 +78,10 @@ void Renderer::renderCamera(Camera* cam) {
 	cam->computeMatricesFromInputs(_window); // Compute the ViewMatrix from keyboard and mouse input (see: camera.h/cpp)
 	_viewMatrix = cam->getViewMatrix(); // get from Camera (Camera position and direction)
 	_projectionMatrix = cam->getProjectionMatrix();
-	cam->getStage()->getRenderList();
+	std::vector<Interactor*> list = cam->getStage()->getRenderList();
+	for (int i = 0; i < list.size(); i++) {
+		renderInteractor(list[i]);
+	}
 }
 
 void Renderer::renderInteractor(Interactor* interactor) {

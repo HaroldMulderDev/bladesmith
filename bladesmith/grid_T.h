@@ -9,12 +9,22 @@ class Grid
 public:
 
    // grid constructor
-   Grid(unsigned int width, unsigned int height);
+	Grid(unsigned int width, unsigned int height) {
+		this->width = width;
+		this->height = height;
+		this->depth = 0;
+   }
 
-   Grid(unsigned int width, unsigned int height, unsigned int depth);
+	Grid(unsigned int width, unsigned int height, unsigned int depth) {
+		this->width = width;
+		this->height = height;
+		this->depth = depth;
+   }
 
    // grid destructor
-   ~Grid();
+	~Grid() {
+
+   }
 
    // Get value at position in grid returns a nullptr if outside of grid bounds
    T* get(unsigned int x, unsigned int y) {
@@ -41,17 +51,17 @@ public:
    }
 
    // Set value at position in grid
-   void set(unsigned int x, unsigned int y, T value) {
+   void set(unsigned int x, unsigned int y, T* value) {
 	   if (inGrid(x, y))
 	   {
-		   grid[getGridIndex(x, y)] = value*;
+		   grid[getGridIndex(x, y)] = value;
 	   }
    }
 
-   void set(unsigned int x, unsigned int y, unsigned int z, T value) {
+   void set(unsigned int x, unsigned int y, unsigned int z, T* value) {
 	   if (inGrid(x,y,z))
 	   {
-		   grid[getGridIndex(x,y,z)] = value* ;
+		   grid[getGridIndex(x,y,z)] = value;
 	   }
    }
    
@@ -59,8 +69,10 @@ public:
    void fill() {
 	   for (int x = 0; x < width; x++) {
 		   for (int y = 0; y < height; y++) {
-			   T value = new T();
-			   grid[y * height + x](value*);
+			   for (int z = 0; z < depth; z++) {
+				   T* value = new T();
+				   set(x, y, z, value);
+			   }
 		   }
 	   }
    }
@@ -93,7 +105,7 @@ public:
    
    // Check if given positions are within grid bounds
    bool inGrid(unsigned int x, unsigned int y, unsigned int z) {
-	   if (x > width, y > height; z > depth) {
+	   if (x > width || y > height || z > depth) {
 		   return false;
 	   }
 	   return true;
@@ -129,25 +141,5 @@ private:
 // Typedefs
 
 
-// class implementation
-
-template<class T>
-Grid::Grid(unsigned int width, unsigned int height) {
-	this->width = width;
-	this->height = height;
-	this->depth = 0;
-}
-
-template<class T>
-Grid::Grid(unsigned int width, unsigned int height, unsigned int depth) {
-	this->width = width;
-	this->height = height;
-	this->depth = depth;
-}
-
-template<class T>
-Grid::~Grid() {
-
-}
 
 #endif // !GRID_T_H
