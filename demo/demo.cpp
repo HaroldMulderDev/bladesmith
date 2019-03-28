@@ -15,13 +15,15 @@ int main( void )
 
 	Renderer renderer(1280, 720);
 	myScene* scene = new myScene();
-	Camera* cam = new Camera(glm::vec3(0, 0, 5), glm::vec2(1280, 720), scene, 0);
+	Camera* cam = new Camera(glm::vec3(0, 0, 5), glm::vec2(0,0), glm::vec2(640, 720), scene, 0);
+	Camera* cam2 = new Camera(glm::vec3(0, 0, 5), glm::vec2(641, 0), glm::vec2(640, 720), scene, 0);
 
 	do {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		renderer.renderCamera(cam);
+		renderer.renderCamera(cam2);
 
 		// Swap buffers
 		glfwSwapBuffers(renderer.window());

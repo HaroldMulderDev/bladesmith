@@ -11,7 +11,7 @@
 
 class Camera {
 public:
-	Camera(glm::vec3 pos, glm::vec2 size, Scene* scene, int priority);
+	Camera(glm::vec3 worldPos, glm::vec2 screenPos, glm::vec2 size, Scene* scene, int priority);
 	~Camera();
 	void computeMatricesFromInputs(GLFWwindow* window);
 	glm::mat4 getProjectionMatrix();
@@ -25,6 +25,11 @@ public:
 		return scene;
 	}
 
+	glm::vec2 Camera::getViewportPos();
+
+	glm::vec2 Camera::getViewportScale();
+
+
 private:
 	glm::mat4 _viewMatrix;
 	glm::mat4 _projectionMatrix;
@@ -32,6 +37,9 @@ private:
 	// Initial position : on +Z
 	glm::vec3 position;
 	glm::vec3 cursor;
+
+	glm::vec2 viewportPos;
+	glm::vec2 viewportScale;
 	float speed;
 	int priority;
 	Scene* scene;

@@ -75,6 +75,9 @@ int Renderer::init()
 }
 
 void Renderer::renderCamera(Camera* cam) {
+	glm::vec2 vpPos = cam->getViewportPos();
+	glm::vec2 vpScale = cam->getViewportScale();
+	glViewport(vpPos.x, vpPos.y, vpScale.x, vpScale.y);
 	cam->computeMatricesFromInputs(_window); // Compute the ViewMatrix from keyboard and mouse input (see: camera.h/cpp)
 	_viewMatrix = cam->getViewMatrix(); // get from Camera (Camera position and direction)
 	_projectionMatrix = cam->getProjectionMatrix();

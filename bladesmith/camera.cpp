@@ -1,14 +1,16 @@
 #include <bladesmith/camera.h>
 
-Camera::Camera(glm::vec3 pos, glm::vec2 size, Scene* scene, int priority) {
+Camera::Camera(glm::vec3 worldPos, glm::vec2 screenPos, glm::vec2 size, Scene* scene, int priority) {
 	this->scene = scene;
 	this->priority = priority;
 	glm::mat4 _viewMatrix;
-	position = pos; //glm::vec3(0, 0, 5);
+	position = worldPos; //glm::vec3(0, 0, 5);
 	cursor = glm::vec3(0, 0, 0);
 	speed = 300.0f; // 300 units / second'
 	//parameters glm::ortho(left, right, bottom, top, znear, zfar)
-	_projectionMatrix = glm::ortho(pos.x, pos.x + size.x, pos.y + size.y, pos.y, 0.1f, 100.0f);
+	_projectionMatrix = glm::ortho(worldPos.x, worldPos.x + size.x, worldPos.y + size.y, worldPos.y, 0.1f, 100.0f);
+	viewportPos = screenPos;
+	viewportScale = size;
 }
 
 Camera::~Camera() {
@@ -25,6 +27,14 @@ glm::mat4 Camera::getViewMatrix(){
 
 glm::vec3 Camera::getCursor(){
 	return cursor;
+}
+
+glm::vec2 Camera::getViewportPos() {
+	return viewportPos;
+}
+
+glm::vec2 Camera::getViewportScale() {
+	return viewportScale;
 }
 
 void Camera::computeMatricesFromInputs(GLFWwindow* window)
