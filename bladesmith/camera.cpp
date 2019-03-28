@@ -51,26 +51,26 @@ void Camera::computeMatricesFromInputs(GLFWwindow* window)
 	glfwGetCursorPos(window, &xpos, &ypos);
 	cursor = glm::vec3( xpos, ypos, 0 );
 
-	// Right and Down vector
-	glm::vec3 right = glm::vec3(1, 0, 0);
-	glm::vec3 up = glm::vec3(0, -1, 0);
+	//// Right and Down vector
+	//glm::vec3 right = glm::vec3(1, 0, 0);
+	//glm::vec3 up = glm::vec3(0, -1, 0);
 
-	// Move up
-	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
-		position += up * deltaTime * speed;
-	}
-	// Move down
-	if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){
-		position -= up * deltaTime * speed;
-	}
-	// Strafe right
-	if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
-		position += right * deltaTime * speed;
-	}
-	// Strafe left
-	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
-		position -= right * deltaTime * speed;
-	}
+	//// Move up
+	//if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
+	//	position += up * deltaTime * speed;
+	//}
+	//// Move down
+	//if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){
+	//	position -= up * deltaTime * speed;
+	//}
+	//// Strafe right
+	//if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+	//	position += right * deltaTime * speed;
+	//}
+	//// Strafe left
+	//if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+	//	position -= right * deltaTime * speed;
+	//}
 
 	// View matrix
 	_viewMatrix = glm::lookAt(

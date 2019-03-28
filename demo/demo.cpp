@@ -22,6 +22,8 @@ int main( void )
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		scene->update();
+
 		renderer.renderCamera(cam);
 		renderer.renderCamera(cam2);
 

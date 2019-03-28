@@ -10,6 +10,8 @@ public:
    // myScene constructor
    myScene();
 
+   void update();
+
    // myScene destructor
    ~myScene();
 private:

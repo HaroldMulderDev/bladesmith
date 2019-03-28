@@ -32,6 +32,10 @@ public:
 	   return position;
    }
 
+   void addPosition(glm::vec3 amount) {
+	   position += amount;
+   }
+
    glm::vec3 getScale() {
 	   return scale;
    }
