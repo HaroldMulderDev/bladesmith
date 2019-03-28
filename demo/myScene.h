@@ -1,9 +1,9 @@
 #ifndef MYSCENE_H
 #define MYSCENE_H
 
-#include <bladesmith/stage.h>
+#include <bladesmith/scene.h>
 
-class myScene : public Stage
+class myScene : public Scene
 {
 public:
 

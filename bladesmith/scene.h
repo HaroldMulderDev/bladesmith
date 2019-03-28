@@ -1,19 +1,19 @@
-#ifndef STAGE_H
-#define STAGE_H
+#ifndef SCENE_H
+#define SCENE_H
 
 #include "interactor.h"
 //#include "camera.h"
 #include <vector>
 
-class Stage
+class Scene
 {
 public:
 
    // Stage constructor
-   Stage();
+   Scene();
 
    // Stage destructor
-   ~Stage();
+   ~Scene();
    
    std::vector<Interactor*> getRenderList() {
 	   return renderList;
@@ -38,4 +38,4 @@ private:
 
 };
 
-#endif // !STAGE_H
+#endif // !SCENE_H

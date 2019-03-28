@@ -7,11 +7,11 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/euler_angles.hpp>
-#include "stage.h"
+#include "scene.h"
 
 class Camera {
 public:
-	Camera(glm::vec3 pos, glm::vec2 size, Stage* stage, int priority);
+	Camera(glm::vec3 pos, glm::vec2 size, Scene* scene, int priority);
 	~Camera();
 	void computeMatricesFromInputs(GLFWwindow* window);
 	glm::mat4 getProjectionMatrix();
@@ -21,8 +21,8 @@ public:
 		return priority;
 	}
 
-	Stage* getStage(){
-		return stage;
+	Scene* getScene(){
+		return scene;
 	}
 
 private:
@@ -34,7 +34,7 @@ private:
 	glm::vec3 cursor;
 	float speed;
 	int priority;
-	Stage* stage;
+	Scene* scene;
 };
 
 #endif // !CAMERA_H
